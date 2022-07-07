@@ -10,10 +10,11 @@ import {
     Legend,
     ChartProps,
 } from '@devexpress/dx-react-chart-material-ui';
-import { Stack, Animation } from '@devexpress/dx-react-chart';
+import { Stack, Animation, RawAxisProps } from '@devexpress/dx-react-chart';
 
-import { energyConsumption as chartData } from '../../../data/chart-data';
+import { energyConsumption as data } from '../../../data/chart-data';
 import { styled } from '@mui/system';
+import { useTheme } from '@mui/material';
 
 const Root = (props: any) => (
     <Legend.Root {...props} sx={{ display: 'flex', margin: 'auto', flexDirection: 'row' }} />
@@ -25,31 +26,41 @@ const Label = (props: any) => (
 // const BarElement = React.createElement("rect", {fill: 'green'})<BarSeries.PointProps>
 
 const BarComponent = (props: BarSeries.PointProps) => {
-    const myProps = props as BarSeries.PointProps & {pane: {width:number, height: number}, 'value0': number}
+    const myProps = props as BarSeries.PointProps & { pane: { width: number, height: number }, 'value0': number }
     const width = props.barWidth * props.maxBarWidth
     const height = myProps.pane.height - props.val
     return <rect
-     x={props.arg - width / 2} 
-     y={myProps.pane.height - height} 
-    // {...props}
-    rx={5}
-     width={width} height={height} fill={props.color} visibility="visible" 
+        x={props.arg - width / 2}
+        y={myProps.pane.height - height}
+        // {...props}
+        rx={5}
+        width={width} height={height} fill={props.color} visibility="visible"
     // value0="937.6"
     ></rect>
 }
-
-const BarChart = () => {
-    const ChartWithChildren = Chart as React.ComponentType<ChartProps & { children: React.ReactNode }>;
+const CustomDiv = () => {
     return (
-        <Paper>
+        <div></div>
+    )
+}
+const BarChart = () => {
+    const [chartData, setChartData] = React.useState(data)
+    const [rendered, setRendered] = React.useState(false)
+    const ChartWithChildren = Chart as React.ComponentType<ChartProps & { children: React.ReactNode }>;
+
+    const { palette: { primary: { main } } } = useTheme()
+    React.useEffect(() => {
+
+        setRendered(true)
+    }, [])
+    return (
+        <div style={{ direction: 'ltr' }}>
             <ChartWithChildren
                 data={chartData}
             >
-                <ArgumentAxis />
-                <ValueAxis
-                // max={2400}
-                />
-
+                {/*// @ts-ignore */}
+                {rendered && <ArgumentAxis />}
+                {rendered && <ValueAxis />}
                 {/* <BarSeries
                     name="Hydro-electric"
                     valueField="hydro"
@@ -66,6 +77,7 @@ const BarChart = () => {
                     // ry="0"
                     barWidth={0.1}
                     argumentField="country"
+                    color={main}
                 />
                 <BarSeries
                     name="Natural gas"
@@ -73,7 +85,7 @@ const BarChart = () => {
                     barWidth={0.1}
                     pointComponent={BarComponent}
                     color='#0a345223'
-                    
+
                     argumentField="country"
                 />
                 {/* <BarSeries
@@ -89,15 +101,15 @@ const BarChart = () => {
                     argumentField="country"
                 /> */}
                 <Animation />
-                <Legend position="bottom" rootComponent={Root} labelComponent={Label} />
-                <Title text="Energy Consumption in 2004 (Millions of Tons, Oil Equivalent)" />
+                {/* <Legend position="bottom" rootComponent={Root} labelComponent={Label} /> */}
+                {/* <Title text="Energy Consumption in 2004 (Millions of Tons, Oil Equivalent)" /> */}
                 <Stack
                     stacks={[
                         { series: ['Hydro-electric', 'Oil', 'Natural gas', 'Coal', 'Nuclear'] },
                     ]}
                 />
             </ChartWithChildren>
-        </Paper>
+        </div>
     )
 }
 

@@ -20,19 +20,19 @@ const LowerSectionContainer = styled('div')({
     justifyContent: 'space-around',
     gridGap: '15px'
 })
-const StyledRawBox = styled(RawBox)({
-    // display: 'grid',
-    // gridTemplateRows: '40px 1fr 3fr',
-    // gridTemplateColumns: 'repeat(auto-fill, 100%)',
+const StyledBoxBodyContainer = styled(BoxBodyContainer)({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly'
 
 })
 
 const ProfitAndLoss = () => {
     const theme = useTheme()
     return (
-        <StyledRawBox>
+        <RawBox>
             <BoxUpper Option={BasicSelect} title='نمودار درآمد هزینه' />
-            <BoxBodyContainer>
+            <StyledBoxBodyContainer>
                 <UpperSectionContainer>
                     <FlexBox>
                         <Typography color={theme.palette.success.main} variant="h5">
@@ -47,25 +47,25 @@ const ProfitAndLoss = () => {
                         ۰۰/۲/۳
                     </Typography>
                 </UpperSectionContainer>
-            </BoxBodyContainer>
-            <LowerSectionContainer>
-                <Grid container >
-                    <Grid item xs={6}>
-                        <PriceItem title='فروش' color={theme.palette.error.main}/>
+                <LowerSectionContainer>
+                    <Grid container >
+                        <Grid item xs={6}>
+                            <PriceItem title='فروش' color={theme.palette.error.main} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <PriceItem title='خرید' color={theme.palette.primary.main} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <PriceItem title='درآمد' color={theme.palette.success.main} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <PriceItem title='هزینه' color={theme.palette.warning.main} />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                        <PriceItem title='خرید' color={theme.palette.primary.main}/>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <PriceItem title='درآمد' color={theme.palette.success.main}/>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <PriceItem title='هزینه' color={theme.palette.warning.main}/>
-                    </Grid>
-                </Grid>
-            </LowerSectionContainer>
-            <Box sx={{ padding: '10px' }} />
-        </StyledRawBox>
+                </LowerSectionContainer>
+            </StyledBoxBodyContainer>
+
+        </RawBox>
     )
 }
 

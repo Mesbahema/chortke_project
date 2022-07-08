@@ -13,8 +13,7 @@ const Banking = () => {
     return (
         <RawBox>
             <BoxUpper title='بانکداری' />
-            <StyledBoxBodyContainer>
-            </StyledBoxBodyContainer>
+            <StyledBoxBodyContainer/>
         </RawBox>
     )
 }

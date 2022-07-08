@@ -2,6 +2,10 @@ import { Grid } from '@mui/material'
 import { styled } from '@mui/system'
 import Banking from './Banking'
 import BarChartComponent from './BarChartComponent'
+import Checkouts from './Checkouts'
+import Cheques from './Cheques'
+import Debts from './Debts'
+import PieChartComponent from './PieChartComponent'
 import ProfitAndLoss from './ProfitAndLoss'
 
 const MainContainer = styled('div')(({ theme }) => ({
@@ -22,10 +26,19 @@ const MainPage = () => {
           <Banking />
         </Grid>
         <Grid item xs={4}>
-          <ProfitAndLoss />
+          <Debts />
         </Grid>
         <Grid item xs={4}>
-          <ProfitAndLoss />
+          <Checkouts />
+        </Grid>
+        <Grid item xs={4}>
+          <Cheques />
+        </Grid>
+        <Grid item xs={4}>
+          <Cheques />
+        </Grid>
+        <Grid item xs={4}>
+          <PieChartComponent />
         </Grid>
       </Grid></MainContainer >
   )

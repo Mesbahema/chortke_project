@@ -1,5 +1,6 @@
-import { styled } from '@mui/material'
-import PieChart from '../../base/charts/PieChart'
+import { styled } from '@mui/system'
+import React from 'react'
+import LineChart from '../../base/charts/LineChart'
 import BasicSelect from '../../shared/BasicSelect'
 import { BoxUpper } from '../../shared/BoxUpper'
 import { RawBox } from './styled'
@@ -10,15 +11,15 @@ const BoxBodyContainer = styled('div')(({ theme }) => ({
     gridTemplateColumns: '100%',
 }))
 
-const PieChartComponent = () => {
-    return (
-        <RawBox>
+const LinChartComponent = () => {
+  return (
+    <RawBox>
             <BoxUpper title='بیشترین فروش' Option={BasicSelect}/>
             <BoxBodyContainer>
-                <PieChart/>
+                <LineChart/>
             </BoxBodyContainer>
         </RawBox>
     )
-}
+  }
 
-export default PieChartComponent
+export default LinChartComponent

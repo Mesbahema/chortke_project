@@ -43,7 +43,7 @@ const CustomDiv = () => {
         <div></div>
     )
 }
-const BarChart = () => {
+const BarChart = ({ height }: { height?: number }) => {
     const [chartData, setChartData] = React.useState(data)
     const [rendered, setRendered] = React.useState(false)
     const ChartWithChildren = Chart as React.ComponentType<ChartProps & { children: React.ReactNode }>;
@@ -57,6 +57,7 @@ const BarChart = () => {
         <div style={{ direction: 'ltr' }}>
             <ChartWithChildren
                 data={chartData}
+                height={height || 350}
             >
                 {/*// @ts-ignore */}
                 {rendered && <ArgumentAxis />}

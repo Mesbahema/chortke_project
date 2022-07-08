@@ -5,6 +5,7 @@ import BarChartComponent from './BarChartComponent'
 import Checkouts from './Checkouts'
 import Cheques from './Cheques'
 import Debts from './Debts'
+import LinChartComponent from './LinChartComponent'
 import PieChartComponent from './PieChartComponent'
 import ProfitAndLoss from './ProfitAndLoss'
 
@@ -39,6 +40,9 @@ const MainPage = () => {
         </Grid>
         <Grid item xs={4}>
           <PieChartComponent />
+        </Grid>
+        <Grid item xs={8}>
+          <LinChartComponent />
         </Grid>
       </Grid></MainContainer >
   )

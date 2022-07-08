@@ -26,22 +26,27 @@ const generateData = (start: number, end: number, step: number) => {
 };
 
 
-const LineChart = () => {
+const LineChart = ({ height }: { height?: number }) => {
     const ChartWithChildren = Chart as React.ComponentType<ChartProps & { children: React.ReactNode }>;
 
     const chartData = generateData(2.5, 12, 0.5)
 
+    const [rendered, setRendered] = React.useState(false)
+    React.useEffect(() => {
+
+        setRendered(true)
+    }, [])
+
     return (
         <Paper>
+            {/* {rendered && <ArgumentAxis />}
+            {rendered && <ValueAxis />} */}
             <ChartWithChildren
                 data={chartData}
+                height={height || 350}
             >
                 <LineSeries
                     valueField="lineValue"
-                    argumentField="argument"
-                />
-                <SplineSeries
-                    valueField="splineValue"
                     argumentField="argument"
                 />
             </ChartWithChildren>

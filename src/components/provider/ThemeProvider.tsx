@@ -23,6 +23,7 @@ export const themeObj = {
       primary: {
           main: '#1062D0',
           seconary: '#1062D0',
+          light: '#E8F1FF'
       },
       success: {
         main: '#24AF22',

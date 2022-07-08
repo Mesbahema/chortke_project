@@ -62,14 +62,6 @@ const BarChart = ({ height }: { height?: number }) => {
                 {/*// @ts-ignore */}
                 {rendered && <ArgumentAxis />}
                 {rendered && <ValueAxis />}
-                {/* <BarSeries
-                    name="Hydro-electric"
-                    valueField="hydro"
-                    barWidth={0.1}
-                    color="green"
-                    rx="5"
-                    argumentField="country"
-                /> */}
                 <BarSeries
                     name="Oil"
                     valueField="oil"
@@ -89,18 +81,6 @@ const BarChart = ({ height }: { height?: number }) => {
 
                     argumentField="country"
                 />
-                {/* <BarSeries
-                    name="Coal"
-                    barWidth={0.1}
-                    valueField="coal"
-                    argumentField="country"
-                />
-                <BarSeries
-                    name="Nuclear"
-                    valueField="nuclear"
-                    barWidth={0.1}
-                    argumentField="country"
-                /> */}
                 <Animation />
                 {/* <Legend position="bottom" rootComponent={Root} labelComponent={Label} /> */}
                 {/* <Title text="Energy Consumption in 2004 (Millions of Tons, Oil Equivalent)" /> */}

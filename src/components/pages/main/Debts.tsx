@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material'
+import { Avatar, Typography } from '@mui/material'
 import { styled, useTheme } from '@mui/system'
 import BasicMenu from '../../shared/BasicMenu'
 import { BoxUpper } from '../../shared/BoxUpper'
@@ -39,7 +39,8 @@ const Debts = () => {
 
 const DebitCardContainer = styled("div")(({ theme }) => ({
     display: 'grid',
-    gridTemplateColumns: '18% 18% 54%',
+    gridTemplateColumns: '16% 36% 44%',
+    gridGap: '10px',
     justifyContent: 'space-between',
     height: '70px',
     padding: '15px 24px',
@@ -51,9 +52,24 @@ const DebitCardItem = styled("div")(({ theme }) => ({
 }))
 const PriceItem = styled(DebitCardItem)(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'end',
     alignItems: 'center'
 }))
+const CustomerItem = styled(DebitCardItem)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly'
+}))
+const RoleSection = styled(Typography)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: theme.palette.primary.light,
+    borderRadius: theme.shape.borderRadius,
+    width: '50px',
+    padding: '5px'
+}))
+
+
 
 
 
@@ -64,7 +80,14 @@ const DebitCard = () => {
             <DebitCardItem>
                 <StyledAvatar src="/assets/images/avatar.svg" />
             </DebitCardItem>
-            <DebitCardItem />
+            <CustomerItem>
+                <Typography>
+                ۰۰۰۱-امبر هرد
+                </Typography>
+                <RoleSection variant="caption" color={theme.palette.primary.main} textAlign="center">
+                    مشتری
+                </RoleSection>
+            </CustomerItem>
             <PriceItem>
                 <PriceComponent price="۳,۴۴۴,۳۳" color={theme.palette.text.main} />
             </PriceItem>

@@ -36,26 +36,6 @@ const Line = (props: any) => (
     />
   );
 
-// const BarElement = React.createElement("rect", {fill: 'green'})<BarSeries.PointProps>
-
-const BarComponent = (props: BarSeries.PointProps) => {
-    const myProps = props as BarSeries.PointProps & { pane: { width: number, height: number }, 'value0': number }
-    const width = props.barWidth * props.maxBarWidth
-    const height = myProps.pane.height - props.val
-    return <rect
-        x={props.arg - width / 2}
-        y={myProps.pane.height - height}
-        // {...props}
-        rx={5}
-        width={width} height={height} fill={props.color} visibility="visible"
-    // value0="937.6"
-    ></rect>
-}
-const CustomDiv = () => {
-    return (
-        <div></div>
-    )
-}
 const LineChart = ({ height }: { height?: number }) => {
     const [chartData, setChartData] = React.useState(data)
     const [rendered, setRendered] = React.useState(false)
@@ -75,35 +55,13 @@ const LineChart = ({ height }: { height?: number }) => {
                 {/*// @ts-ignore */}
                 {rendered && <ArgumentAxis />}
                 {rendered && <ValueAxis />}
-                {/* <BarSeries
-                    name="Hydro-electric"
-                    valueField="hydro"
-                    barWidth={0.1}
-                    color="green"
-                    rx="5"
-                    argumentField="country"
-                /> */}
                 <LineSeries
                     name="Nuclear"
                     valueField="hydro"
                     argumentField="country"
                     seriesComponent={Line}
                 />
-                {/* <BarSeries
-                    name="Coal"
-                    barWidth={0.1}
-                    valueField="coal"
-                    argumentField="country"
-                />
-                <BarSeries
-                    name="Nuclear"
-                    valueField="nuclear"
-                    barWidth={0.1}
-                    argumentField="country"
-                /> */}
                 <Animation />
-                {/* <Legend position="bottom" rootComponent={Root} labelComponent={Label} /> */}
-                {/* <Title text="Energy Consumption in 2004 (Millions of Tons, Oil Equivalent)" /> */}
                 <Stack
                     stacks={[
                         { series: ['Hydro-electric', 'Oil', 'Natural gas', 'Coal', 'Nuclear'] },
